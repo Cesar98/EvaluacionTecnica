@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <style type="text/css">
+      .sidenav {
+        height: 100%;
+        width: 160;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: lightblue;
+        padding-top: 20px;
+        display: block;
+      }
+
+      .sidenav a {
+        padding: 6px 8px 6px 16px;
+        font-size: 25px;
+        display: block;
+      }
+
+      .sidenav a:hover {
+        color: #f1f1f1;
+      }
+
+      .main {
+        margin-left: 160px;
+        padding: 0px 10px;
+      }
+    </style>
+
+    <title>{% block title %} {% endblock %}</title>
+  </head>
+  <body>
+    <div id="sidenav" class="sidenav">
+      <a href="/home">Inicio</a>
+      <a href="/list_employees">Empleados</a>
+      <a href="/searchEmp">Saludo</a>
+      <a href="/listUsers">Home</a>
+    </div>
+    <div id="content" name="content" class="main">
+      <button id="btnMenu" onclick="showMenu();" value="Ver menu" style="background-color: lightgray;">
+        Ocultar menu
+      </button>
+
+      <h2 style="background-color: lightcoral; text-align: center;">Evaluacion tecnica</h2>
+
+      {% block content %} {% endblock %}
+    </div>
+  </body>
+</html>
+
+<script>
+  function showMenu() {
+    let sidenav = document.getElementById("sidenav");
+    let btnmenu = document.getElementById("btnMenu");
+
+    if (sidenav.style.display == "none") {
+      sidenav.style.display = "block";
+      btnmenu.innerText = "Ocultar menu";
+      btnmenu.value = "Ocultar menu";
+    } else {
+      sidenav.style.display = "none";
+      btnmenu.innerText = "Ver menu";
+      btnmenu.value = "Ver menu";
+    }
+  }
+</script>
