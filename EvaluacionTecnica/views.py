@@ -1,7 +1,4 @@
-from EmployeesManagement.models import Empleados
-from django.http import HttpResponse;
-from django.template import Template, Context, loader;
-from django.shortcuts import render;
+from django.shortcuts import render
 from EmployeesManagement.models import Empleados, Departamentos, Empresas
 
 def home(request):
@@ -27,18 +24,34 @@ def buscar(request):
 
             mensaje = 'El empleado %s se esta buscando por departamento...' % request.GET['searchEMp']
             busqueda = request.GET['searchEMp']
-            dep = Departamentos.objects.get(departamento='%s' % busqueda)
-            empleados = Empleados.objects.filter(departamento='%s' % dep.id)
+            try:
+                dep = Departamentos.objects.get(departamento='%s' % busqueda)
+            except Departamentos.DoesNotExist:
+                dep = ''
+
+            if dep == '':
+                empleados = Empleados.objects.all()
+                mensaje = 'No se encontraron resultados, intente con el nombre completo del departamento'
+            else:
+                empleados = Empleados.objects.filter(departamento='%s' % dep.id)
 
         elif request.GET['tipo'] == '3':
 
             mensaje = 'El empleado %s se esta buscando por empresa...' % request.GET['searchEMp']
             busqueda = request.GET['searchEMp']
 
-            empresa = Empresas.objects.get(empresa='%s' % busqueda)
-            dep = Departamentos.objects.filter(empresa='%s' % empresa.id)
+            try:
+                empresa = Empresas.objects.get(empresa='%s' % busqueda)
 
-            empleados = Empleados.objects.filter(departamento_id__in= dep)
+            except Empresas.DoesNotExist:
+                empresa = ''
+
+            if empresa == '':
+                mensaje = 'No se encontraron resultados, intente con el nombre completo de la empresa'
+                empleados = Empleados.objects.all()
+            else:
+                dep = Departamentos.objects.filter(empresa='%s' % empresa.id)
+                empleados = Empleados.objects.filter(departamento_id__in= dep)
             
     else:
         mensaje = 'No se ingreso nada en el formulario'
