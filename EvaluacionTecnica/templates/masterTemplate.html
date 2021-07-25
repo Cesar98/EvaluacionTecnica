@@ -3,7 +3,7 @@
     <style type="text/css">
       .sidenav {
         height: 100%;
-        width: 160;
+        width: 200;
         position: fixed;
         top: 0;
         left: 0;
@@ -23,7 +23,7 @@
       }
 
       .main {
-        margin-left: 160px;
+        margin-left: 200;
         padding: 0px 10px;
       }
     </style>
@@ -32,17 +32,24 @@
   </head>
   <body>
     <div id="sidenav" class="sidenav">
-      <a href="/home">Inicio</a>
+      <a href="">Inicio</a>
       <a href="/list_employees">Empleados</a>
-      <a href="/searchEmp">Saludo</a>
-      <a href="/listUsers">Home</a>
+      <a href="/form_employees">Crear empleado</a>
+      <a href="/admin">Administracion</a>
     </div>
     <div id="content" name="content" class="main">
-      <button id="btnMenu" onclick="showMenu();" value="Ver menu" style="background-color: lightgray;">
+      <button
+        id="btnMenu"
+        onclick="showMenu();"
+        value="Ver menu"
+        style="background-color: lightgray"
+      >
         Ocultar menu
       </button>
 
-      <h2 style="background-color: lightcoral; text-align: center;">Evaluacion tecnica</h2>
+      <h2 style="background-color: lightcoral; text-align: center">
+        Evaluacion tecnica
+      </h2>
 
       {% block content %} {% endblock %}
     </div>

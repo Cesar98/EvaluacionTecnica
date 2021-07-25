@@ -19,6 +19,12 @@ from EvaluacionTecnica import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', views.home),
+    path('', views.home),
     path('list_employees/', views.list_employees),
+    path('form_employees/', views.form_employees),
+    path('buscar/', views.buscar),
+    path('crear/', views.crear),
+    path('editar/<int:id>/', views.editar),
+    path('editarF/', views.editarF),
+    path('eliminar/<int:id>/', views.eliminar),
 ]
