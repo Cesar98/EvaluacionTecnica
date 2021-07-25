@@ -50,6 +50,7 @@ Se realizaron eventos JS para el el ocultar y mostrar el menu lateral
 
 __________________________________________________________________________________________________________
 Logrado:
+
 Se logro crear la aplicacion con los requerimientos necesarios de tener departamentos dentro de empresas y el crud de empleados
 La busqueda por los metodos requeridos
 la creacion de nuevo empleado con algunos campos requeridos y algunos no
@@ -57,6 +58,7 @@ y el loggin
 
 __________________________________________________________________________________________________________
 Puntos extras logrados:
+
 La creacion de dos diferentes tipos de usuarios con comandos django
 mostrar y ocultar el menu lateral
 La creacion de grupos dentro del dashboard de admin
